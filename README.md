@@ -26,7 +26,11 @@ Modifica la gramática corrigiendo los errores que veas, de manera que genere fr
               
 <declaration> ::= 'var' WORD ('=' <expr>)?
 
-<expr> ::= <term> (('==', '!=', '>', '>=', '<', '<=', '=') <term>)*
+<expr> ::= ( <leftVal> '=' )*  <comp>
+
+<leftVal> ::= WORD ( '.' WORD | '[' <expr> ']' )*
+
+<comp> ::= <term> (('==', '!=', '>', '>=', '<', '<=', '=') <term>)*
 
 <term> ::= <sum> (('+', '-') <sum>)*
 
@@ -34,11 +38,13 @@ Modifica la gramática corrigiendo los errores que veas, de manera que genere fr
 
 <fact> ::= <value> | <word> <apply> | <parenthesis> | <array> // Added by: Casiano
 
-<apply> ::= '(' <expr> (',' <expr>)* ')'<apply> | '.'<word><apply> | empty
+<apply> ::= '(' <expr> (',' <expr> )* ')' <apply> | '.'<word> <apply> | empty
 
 <array> ::= '[' ']' | '[' <expr> (',' <expr> )*] // Added by Casiano
 
 <parenthesis> ::= '(' <expr> ')'
+
+<value> ::= ( WORD | VALUE | APPLY ) ( '.' WORD | '[' <expr> ']' )*
 ```
 
 ## Tokens
