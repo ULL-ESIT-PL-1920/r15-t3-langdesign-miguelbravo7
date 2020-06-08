@@ -36,15 +36,15 @@ Modifica la gramática corrigiendo los errores que veas, de manera que genere fr
 
 <sum> ::= <fact> (('*', '/') <fact>)*
 
-<fact> ::= <value> | <word> <apply> | <parenthesis> | <array> // Added by: Casiano
+<fact> ::= <value> | WORD <apply> | <parenthesis> | <array> // Added by: Casiano
 
-<apply> ::= '(' <expr> (',' <expr> )* ')' <apply> | '.'<word> <apply> | empty
+<apply> ::= '(' <expr> (',' <expr> )* ')' <apply> | '.'WORD <apply> | empty
 
 <array> ::= '[' ']' | '[' <expr> (',' <expr> )*] // Added by Casiano
 
 <parenthesis> ::= '(' <expr> ')'
 
-<value> ::= ( WORD | VALUE | APPLY ) ( '.' WORD | '[' <expr> ']' )*
+<value> ::= ( WORD | VALUE | <apply> ) ( '.' WORD | '[' <expr> ']' )*
 ```
 
 ## Tokens
