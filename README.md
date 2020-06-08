@@ -44,7 +44,7 @@ Modifica la gramática corrigiendo los errores que veas, de manera que genere fr
 
 <parenthesis> ::= '(' <expr> ')'
 
-<value> ::= ( WORD | VALUE | <apply> ) ( '.' WORD | '[' <expr> ']' )*
+<value> ::= ( WORD | VALUE ) <apply> ( '.' WORD | '[' <expr> ']' )*
 ```
 
 ## Tokens
