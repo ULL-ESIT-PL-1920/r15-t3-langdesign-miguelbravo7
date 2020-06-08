@@ -21,7 +21,7 @@ Modifica la gramática corrigiendo los errores que veas, de manera que genere fr
                <declaration> |
               "if" <parenthesis> <block> ("else" "if" <block>)* ('else' <block>)? |
               "while" <parenthesis> <block> |
-              'function' <word> '(' <word> (',' <word>)* ')' <block> |
+              'function' WORD '(' WORD (',' WORD)* ')' <block> |
               <expr> ";"
               
 <declaration> ::= 'var' WORD ('=' <expr>)?
