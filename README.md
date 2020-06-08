@@ -30,7 +30,7 @@ Modifica la gramática corrigiendo los errores que veas, de manera que genere fr
 
 <leftVal> ::= WORD ( '.' WORD | '[' <expr> ']' )*
 
-<comp> ::= <term> (('==', '!=', '>', '>=', '<', '<=', '=') <term>)*
+<comp> ::= <term> (('==', '!=', '>', '>=', '<', '<=') <term>)*
 
 <term> ::= <sum> (('+', '-') <sum>)*
 
