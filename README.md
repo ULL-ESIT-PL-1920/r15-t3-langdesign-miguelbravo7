@@ -18,11 +18,13 @@ Modifica la gramática corrigiendo los errores que veas, de manera que genere fr
 <block> ::= '{' <statement>* '}'  // Modified Casiano
 
 <statement> ::=
-               <declaration> |
+               <declaration> ';'? |
               "if" <parenthesis> <block> ("else" "if" <block>)* ('else' <block>)? |
+              "for" '(' <declaration> ';' <comp>? ';' <expr>? ')' <block> |
               "while" <parenthesis> <block> |
-              'function' WORD '(' WORD (',' WORD)* ')' <block> |
-              <expr> ";"
+              'function' WORD? '(' WORD (',' WORD)* ')' <block> |
+              '@' WORD WORD <apply> ';'? |
+              <expr> ";"?
               
 <declaration> ::= 'var' WORD ('=' <expr>)?
 
@@ -36,15 +38,20 @@ Modifica la gramática corrigiendo los errores que veas, de manera que genere fr
 
 <sum> ::= <fact> (('*', '/') <fact>)*
 
-<fact> ::= <value> | WORD <apply> | <parenthesis> | <array> // Added by: Casiano
+<fact> ::= 
+              <value> |
+              WORD <apply> |
+              <parenthesis> |
+              <array> | // Added by: Casiano
+              '{' ( VALUE ';' <expr> )* '}' // Implementacion de objeto
 
-<apply> ::= '(' <expr> (',' <expr> )* ')' <apply> | '.'WORD <apply> | empty
+<apply> ::= '(' <expr>? (',' <expr> )* ')' <apply> | '.'WORD <apply> | '[' <expr> ']' | empty
 
 <array> ::= '[' ']' | '[' <expr> (',' <expr> )*] // Added by Casiano
 
 <parenthesis> ::= '(' <expr> ')'
 
-<value> ::= ( WORD | VALUE ) ( '.' WORD | '[' <expr> ']' | <apply> )*
+<value> ::= ( WORD | VALUE ) <apply>*
 ```
 
 ## Tokens
